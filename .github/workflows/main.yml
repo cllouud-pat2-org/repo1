@@ -1,10 +1,14 @@
-name: Actions Runner Controller Demo
+name: Test k8s mode v5
 on:
   workflow_dispatch:
-
 jobs:
   Explore-GitHub-Actions:
-    # You need to use the INSTALLATION_NAME from the previous step
     runs-on: pat2
+    container:
+      image: quay.io/ascend/cann:latest
+      
     steps:
-    - run: npu-smi info
+      - name: Show NPU info
+        run: |
+          npu-smi info
+      - run: sleep 30000
